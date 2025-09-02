@@ -98,13 +98,9 @@ class Solution {
     // }
 
     public static int coinChange(int[] coins, int amount) {
-
-        // TODO: edge cases
         if(amount == 0){
             return 0;
         }
-
-        // TODO: initialization
         int maxAmount = amount + 1;
         int numsChange[] = new int[maxAmount];
         Arrays.fill(numsChange, maxAmount);
@@ -113,17 +109,13 @@ class Solution {
         
         for (int i = 1; i <= amount; i++) {
             for (int coin : coins) {
-                if (coin <= i && numsChange[i - coin] <= amount) {
-                    numsChange[i] = Math.min(numsChange[i], numsChange[i - coin] + 1);
+                if(coin <= i){
+                    numsChange[i] = Math.min(numsChange[i], numsChange[i-coin]+ 1);
                 }
-                // System.out.println("the coins are " + coin);
             }
-            System.out.println("THE NUMS ISSSS :::: " + i + " :: " + numsChange[i]);
         }
-        
-        // TODO: calculating all states
-        // TODO: return
-        return -1;
+        System.out.println(Arrays.toString(numsChange));
+        return numsChange[amount] != maxAmount ? numsChange[amount] : -1;
     }
 
 // And now, we’ll write the loop with the logic we’ve discussed: from the earliest state to the final solution, which means we calculate from num_change(1) to num_change(amount)!
@@ -156,7 +148,7 @@ class Solution {
 
     public static void main(String[] args) {
         
-        int[] coins = { 1, 2, 5 };
+        int[] coins = { 2, 5 };
         int amount = 11;
 
         int result = coinChange(coins, amount);
@@ -167,5 +159,5 @@ class Solution {
 }
 // @lc code=end
 
-        // int[] coins = { 186,419,83,408 };
-        // int amount = 6249;
+// int[] coins = { 186,419,83,408 };
+// int amount = 6249;
