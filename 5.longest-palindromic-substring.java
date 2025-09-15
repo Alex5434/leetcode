@@ -6,8 +6,8 @@
  * https://leetcode.com/problems/longest-palindromic-substring/description/
  *
  * algorithms
- * Medium (33.31%)
- * Likes:    31166
+ * Medium (36.07%)
+ * Likes:    31177
  * Dislikes: 1919
  * Total Accepted:    4M
  * Total Submissions: 11.1M
@@ -43,9 +43,35 @@
 
 // @lc code=start
 class Solution {
-    public String longestPalindrome(String s) {
-        
+    public static String longestPalindrome(String s) {
+        int start = 0, end = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            int odd = loopAndExpand(s, i, i);
+            int even = loopAndExpand(s, i, i + 1);
+
+            int max_len = Math.max(odd, even);
+
+            if(max_len > end - start){
+                start = i -  (max_len - 1) /2;
+                end = i + max_len / 2;
+            }
+        }
+        return s.substring(start, end + 1);
+
+    }
+
+    public static int loopAndExpand(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+
+        }
+        return right - left - 1;
+    }
+
+    public static void main(String[] args) {
+        longestPalindrome("bccba");
     }
 }
 // @lc code=end
-
