@@ -1,50 +1,45 @@
-package demo;
 public class RemoveDuplicates {
 
     static void removeDuplicatesInOrder(String inp) {
-        String s = "";
         StringBuilder sb = new StringBuilder(inp);
-        for (int i = 0; i < inp.length(); i++) {
-            System.out.println();
+
+        for (int i = 0; i < sb.length(); i++) {
+            System.out.println("LENGTHHHHHH::::::: " + sb.length());
             // alphabet
-            if (inp.charAt(i) >= 'a') {
-                char currentChar = inp.charAt(i);
-                boolean isOk = true;
-                int j;
-                for (j = 0; j < inp.length(); j++) {
-                    if (i == j) {
-                        break;
+            if (sb.charAt(i) >= 'a') {
+                char currentChar = sb.charAt(i);
+                System.out.println("CCCC :::" + currentChar);
+                boolean isMatchFound = false;
+                for (int j = 0; j < sb.length(); j++) {
+                    if (currentChar == sb.charAt(j) && !isMatchFound) {
+                        System.out.println(
+                                "Found the match :: " + i + " " + j + " -- " + sb.charAt(i) + " :: " + sb.charAt(j));
+                        isMatchFound = true;
+                        continue;
                     }
-                    if (currentChar == inp.charAt(j)) {
-                        isOk = false;
-                        break;
+                    if (currentChar == sb.charAt(j) && isMatchFound) {
+                        sb.deleteCharAt(j);
+                        if(i==j) i--;
                     }
                 }
-                if (isOk) {
-                    // System.out.println("the jj to delete" + j);
-                    // sb.deleteCharAt(j);
-                    s+= 
-                } 
-            } else { 
+            } else {
                 // number
-                char currentNum = inp.charAt(i);
-                // System.out.println("NNN ::" + currentNum);
-                boolean isOk = true;
-                int j;
-                for (j = inp.length() - 1; j >= 0; j--) {
-                    if (i == j) {
-                        break;
+                char currentChar = sb.charAt(i);
+                System.out.println("NNN ::" + currentChar);
+                boolean isMatchFound = false;
+                for (int j = sb.length() - 1; j >= 0; j--) {
+                    if (currentChar == sb.charAt(j) && !isMatchFound) {
+                        isMatchFound = true;
+                        continue;
                     }
-                    if (currentNum == inp.charAt(j)) {
-                        isOk = false;
-                        break;
+                    if (currentChar == sb.charAt(j) && isMatchFound) {
+                        sb.deleteCharAt(j);
+                        if(i==j) i--;
                     }
-                }
-                if (isOk) {
-                    System.out.println("the jj to delete NNN" + j);
-                    sb.deleteCharAt(j);
                 }
             }
+            
+            System.out.println(sb);
         }
         System.out.println("String: " + sb);
     }
