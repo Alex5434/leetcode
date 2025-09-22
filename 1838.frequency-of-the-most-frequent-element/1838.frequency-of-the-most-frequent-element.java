@@ -68,34 +68,53 @@ import java.util.Arrays;
 
 // @lc code=start
 class Solution {
-    public static  int maxFrequency(int[] nums, int k) {
+    // public static int maxFrequency(int[] nums, int k) {
+    // Arrays.sort(nums);
+    // for (int i = nums.length - 1; i >=0 ; i--) {
+    // System.out.println("LLLLLL "+ nums[i] + " " + i);
+    // int credits = k;
+    // int[] tempArray = new int[i + 1];
+    // tempArray[i] = nums[i];
+    // for (int j = i - 1 ; j >= 0 ; j--) {
+    // int difference = nums[j+1] - nums[j];
+    // System.out.println("DIFFERENCE IS"+ difference);
+    // if(difference <= credits){
+    // //
+    // tempArray[j] = nums[j] + difference;
+    // credits -= difference;
+    // } else{
+    // tempArray[j] = nums[j];
+    // }
+    // System.out.println("THE TEMP J ARRAY IS" + nums[j] + " " + difference);
+    // }
+    // System.out.println("ARRAYS TO BE DECUED :::" + Arrays.toString(tempArray));
+    // }
+    // return 1;
+    // }
+
+
+    // Solved the max frequency with the sliding window approach
+    public static int maxFrequency(int[] nums, int k) {
         Arrays.sort(nums);
-        // for (int i = nums.length - 1; i >=0 ; i--) {
-        //     System.out.println("LLLLLL "+ nums[i] + "  " + i);
-        //     int credits = k;
-        //     int[] tempArray = new int[i + 1];
-        //     tempArray[i] = nums[i];
-        //     for (int j = i - 1 ; j >= 0 ; j--) {
-        //         int difference = nums[j+1] - nums[j];
-        //         System.out.println("DIFFERENCE IS"+ difference);
-        //         if(difference <= credits){
-        //             // 
-        //             tempArray[j] = nums[j] + difference;
-        //             credits -= difference;
-        //         } else{
-        //             tempArray[j] = nums[j];
-        //         }
-        //         System.out.println("THE TEMP J ARRAY IS" + nums[j] + " " + difference);
-        //     }
-        //     System.out.println("ARRAYS TO BE DECUED :::" + Arrays.toString(tempArray));
-        // }
-        for (int i = 0; i < nums.length; i++) {
-            System.out.println("JJJJJJJJJ" + nums[i]);
+
+        int left = 0, maxLength = 0;
+        long currentSum = 0;
+        for (int right = 0; right < nums.length; right++) {
+            long target = nums[right];
+            currentSum += target;
+
+            while (((right - left + 1) * target) - currentSum > k) {
+                currentSum -= nums[left];
+                left++;
+            }
+            maxLength = Math.max(maxLength, right - left + 1);
+
         }
-        return  1;
+        return maxLength;
     }
+
     public static void main(String[] args) {
-        int arr[] = {10, 1, 5, 1, 3, 2};
+        int arr[] = { 10, 1, 5, 1, 3, 2 };
         int size = 3;
 
         int result = maxFrequency(arr, size);
@@ -104,4 +123,3 @@ class Solution {
 
 }
 // @lc code=end
-
