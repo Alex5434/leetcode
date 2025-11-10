@@ -56,6 +56,10 @@
 
 // @lc code=start
 class Solution {
+    
+    // ⚠️ BEST TIME COMPLEXITY : O(1) and WORST TIME COMPLEXITY : O(n) [Need this to be done in O(log n)]
+    // 📝 Need to solve it using the binary search since it is a sorted array
+    // Beats 100% but not meeting the question requirements
     public static int hIndex(int[] citations) {
         int hInd = 1;
         for (int i = citations.length - 1; i >= 0; i--) {
