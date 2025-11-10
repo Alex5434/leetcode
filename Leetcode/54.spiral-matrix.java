@@ -48,6 +48,34 @@ class Solution {
 
     // }
 
+/*
+ * 
+
+        🚧 Need to spiral pattern
+
+    1 2 3 
+    4 5 6 
+    7 8 9
+
+    1  2  3  6  9  8  7  4  5
+    00 01 02 12 22 21 20 10 11
+
+    mat [][]
+
+    // loop through i ultil (row.length / 2) + 1
+
+    // parse top
+        // start i+j and run until (max.length - 1 - i);
+
+    // parse right
+        // start in j=i+1; i< rows.length - 1 - i; 
+
+    // parse bottom
+        // start in j=rows.length - 1 - i; j <= 0 ; j--;
+        
+    // parse left
+
+ */
     public static void spiralOrder(int[][] matrix) {
         int rows = matrix.length;
         int cols = matrix[0].length;
