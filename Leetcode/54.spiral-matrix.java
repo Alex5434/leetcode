@@ -43,6 +43,9 @@
  */
 
 // @lc code=start
+
+import java.util.*;
+
 class Solution {
     // public List<Integer> spiralOrder(int[][] matrix) {
 
@@ -76,34 +79,66 @@ class Solution {
     // parse left
 
  */
-    public static void spiralOrder(int[][] matrix) {
+
+    // ✅ Completed the spiral in the first submission wonder!!!!
+    public static List<Integer> spiralOrder(int[][] matrix) {
         int rows = matrix.length;
         int cols = matrix[0].length;
         int ind = 0;
-        int result[] = new int[rows * cols];
+        Integer result[] = new Integer[rows * cols];
+
         for (int i = 0; i <= rows / 2; i++) {
 
             // logic for TOP
-            for (int j = i; j < (cols - i); j++) {
-                System.out.println("THE MATRIX VALUE ISSS ::: " + matrix[i][j]);
+            for (int j = i; j < (cols - i) && (ind < rows * cols); j++) {
+                // System.out.println("THE MATRIX VALUE ISSS ::: " + matrix[i][j]);
                 result[ind++] = matrix[i][j];
             }
 
-            // logic for RIGHT
+            // logic for right
+            // 8  12
+            // 13 23
 
-            for (int j = (rows - i - 2); j < rows - i - 1; j++) {
-                System.out.println("THE I AND J ISS" + j + " " + (cols - i - 1));
-                System.out.println("PPPPPPP :::: " + matrix[j][cols - i - 1]);
+            for (int j = i + 1; (j < rows - i - 1) && (ind < rows * cols); j++) {
+                // System.out.println("RIGHT :: "+ matrix[j][cols - 1 -i]);
+                result[ind++] = matrix[j][cols - 1 -i];
             }
 
+
+            // logic for bottom
+            // 9  8  7
+            // 22 21 20
+
+            // System.out.println("BEF ::: " + (rows - i - 1) + " ---- ");
+            for (int j = cols - i - 1; (j >= i) && (ind < rows * cols) ; j--) {
+                // System.out.println("JJJ " + j);
+                // System.out.println("MATRIXXXX " + );
+                result[ind++] = matrix[rows - i - 1][j];
+            }
+
+            // for left index
+
+            // System.out.println(rows - i - 2);
+            for (int j = rows - i - 2; (j > i) && (ind < rows * cols); j--) {
+                System.out.println("PPP :: " + j);
+                result[ind++] = matrix[j][i];
+            }
+
+            // System.out.println("FIRST LOOP ARRAY :: " + Arrays.toString(result));
         }
+
+        // List<Integer> resultList = ;
+
+        return Arrays.asList(result);
+        
     }
 
     public static void main(String[] args) {
-        // int matrix[][] = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };
-        int matrix[][] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+        // int matrix[][] = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, {13, 14, 15, 16} };
+        int matrix[][] = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };
+        // int matrix[][] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 
-        spiralOrder(matrix);
+        System.out.println("LLLL" + spiralOrder(matrix));
     }
 }
 // @lc code=end
