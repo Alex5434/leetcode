@@ -10,7 +10,6 @@ IMPROVEMENT LEARNING
 TODO 🟠
 3607
 45. jump-game-II
-54
 
-Rank
-1,660,941
+Rank    
+1,573,340
