@@ -1,4 +1,4 @@
-🚧📝⚠️
+🟠🚧✅📝⚠️
 
 NEED TO LEARN ✅
 417
@@ -7,9 +7,11 @@ NEED TO LEARN ✅
 IMPROVEMENT LEARNING
 13
 
-TODO 🟠
+In-progress
 3607
+
+TODO 🟠
 45. jump-game-II
 
 Rank    
-1,573,340
+1,533,160
