@@ -9,9 +9,10 @@ IMPROVEMENT LEARNING
 
 In-progress
 3607
+407 - need to learn(BFS & Priority queue)
 
 TODO 🟠
 45. jump-game-II
 
 Rank    
-1,533,160
+1,534,781
