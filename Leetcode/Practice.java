@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-class Practice {
+class Solution {
     public static int[] bubbleSort(int arr[]) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i; j < arr.length; j++) {
@@ -44,9 +44,28 @@ class Practice {
     }
 
     public static void main(String[] args) {
-        int arr[] = { 13, 46, 24, 52, 20, 24, 9 };
+        // int arr[] = { 13, 46, 24, 52, 20, 24, 9 };
 
-        int result[] = insertionSort(arr);
-        System.out.println("THE SORTED ARRYA IS :: " + Arrays.toString(result));
+        // int result[] = insertionSort(arr);
+        // System.out.println("THE SORTED ARRYA IS :: " + Arrays.toString(result));
+
+
+        int i = 123;
+
+        // boolean result = (i & 1) == 0;
+
+        // System.out.println("RESULT isss :: " + (i & (i - 1)));
+
+        while (i > 0) {
+            i = i & (i - 1);
+            System.out.println(i);
+            System.out.println("+++");
+        }
+        
+
+        // if((i & 1) == 0){
+        // } else{
+        //     System.out.println("EVEN :::");
+        // }
     }
 }
