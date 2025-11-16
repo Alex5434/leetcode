@@ -66,7 +66,6 @@
 
 import java.util.*;
 class Solution {
-
     public class ListNode {
         int val;
         ListNode next;
@@ -74,6 +73,7 @@ class Solution {
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
+
 
     public static ListNode reverseList(ListNode head) {
         ListNode prev = null;
@@ -89,26 +89,9 @@ class Solution {
         return prev;
     }
 
-    // public static void sample(){
-    //     Stack<Integer> stack = new Stack<>();
-
-    //     stack.push(1);
-    //     stack.push(2);
-    //     stack.push(3);
-        
-    //     // stack.push(4);
-
-    //     System.out.println("LKK" + stack);
-        
-    //     while (stack.size() - 2 >= 0) {
-    //         int m = stack.pop();
-    //         int n = stack.pop();
-    //         System.out.println("LKK" + stack + " :: M " + m +" NN : " + n);
-    //     }
-    // }
-
     public static void main(String[] args) {
-        sample();
+        ListNode head = new ListNode();
+
     }
 }
 // @lc code=end
