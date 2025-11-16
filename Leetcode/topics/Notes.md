@@ -22,6 +22,14 @@ j -> index at which to look up
 Example:
     4   (1 0 0)
          ↑   
-    (4 & (1 << 0)) != 0) => false
-    (4 & (1 << 1)) != 0) => false
-    (4 & (1 << 2)) != 0) => true
+    (4 & (1 << 0)) != 0 => false
+    (4 & (1 << 1)) != 0 => false
+    (4 & (1 << 2)) != 0 => true
+
+
+3. CHECK IS POWER OF 2
+
+Check if n is power of 2
+(n & (n-1)) == 0
+
+n -> number to check
