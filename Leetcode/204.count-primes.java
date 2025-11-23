@@ -49,38 +49,76 @@
  */
 
 // @lc code=start
+import java.util.*;
 class Solution {
-        public static int countPrimes(int n) {
-            int count = 0;
 
-            if(n == 1 || n == 0){
-                return 0;
-            }
+    
+    // NOT Oprtimal for larger inputs
+    // public static int countPrimes(int n) {
+    //     int count = 0;
 
-            for (int i = 2; i < n ; i++) {
-                if (isPrime(i)) {
-                    // System.out.println("LLLL " + i);
-                    count++;
+    //     if(n == 1 || n == 0){
+    //         return 0;
+    //     }
+
+    //     for (int i = 2; i < n ; i++) {
+    //         if (isPrime(i)) {
+    //             // System.out.println("LLLL " + i);
+    //             count++;
+    //         }
+    //     }
+
+    //     return count;
+    // }
+
+    // public static boolean isPrime(int n){
+    //     for (int i = 2; i * i <= n; i++) {
+    //         if(n % i == 0){
+    //             return false;
+    //         }
+    //     }
+
+    //     return true;
+    // }
+
+    // Optimsed approach using SIEVE OF ERATOSTHENE
+    public static int countPrimes(int n) {
+        int[] primes = new int[n];
+
+        Arrays.fill(primes, 1);
+        
+        primes[0] = 0;
+        primes[1] = 0;
+
+        for (int i = 2; i * i < n; i++) {
+            System.out.println("KKKKKKK " + i);
+
+            if(primes[i] == 1){
+
+                for (int j = i * i; j < n ; j+= i) {
+                    primes[j] = 0;
                 }
             }
 
-            return count;
+            System.out.println("Arrays to strings :: " + Arrays.toString(primes));
         }
 
-        public static boolean isPrime(int n){
-            for (int i = 2; i * i <= n; i++) {
-                if(n % i == 0){
-                    return false;
-                }
+        for (int i = 0; i < primes.length; i++) {
+            if(primes[i] == 1){
+                System.out.print(i + " ");
             }
-
-            return true;
         }
+
+        return 1;
+    }
+
+
+
 
     public static void main(String[] args) {
 
         
-        int n = 5000000;
+        int n = 10;
 
         System.out.println("LLLL  " + countPrimes(n));
     }
