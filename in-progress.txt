@@ -14,6 +14,7 @@ In-progress
 
 TODO 🟠
 45. jump-game-II
+148. Sort List
 
 Rank    
-1,534,781
+1,418,231
