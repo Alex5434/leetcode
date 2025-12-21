@@ -3,7 +3,6 @@
 NEED TO LEARN ✅
 417
 88
-206.reverseList (Copied from GPT)
 148. Sort List (Copied from GPT)
 
 IMPROVEMENT LEARNING
@@ -18,4 +17,4 @@ TODO 🟠
 
 
 Rank    
-1,397,807
+1,347,456
