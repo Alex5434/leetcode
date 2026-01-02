@@ -55,35 +55,69 @@
 class Solution {
 
     // NOT optimal solved in O(1) need to solve it in O(logn) using binary search
+    // public static int search(int[] nums, int target) {
+    //     int l = 0;
+    //     int r = nums.length - 1;
+    //     while (r >= l) {
+    //         System.out.println(" RIGHT :: " +r + " LEFT ::: " + l);
+    //         if(nums[r] == target){
+    //             return r;
+    //         }
+
+    //         if(nums[l] == target){
+    //             return l;
+    //         }
+
+    //         int leftTarget = nums[l] - target;
+    //         int rightTarget = nums[r] - target;
+
+    //         if(leftTarget < rightTarget){
+    //             l++;
+    //         } else{
+    //             r--;
+    //         }
+    //     }
+
+    //     return -1;
+    // }
+
+    // Going to solve it in O(log n) using the binary search
+    // ✅ Solved optimally but need to see the video explanation
     public static int search(int[] nums, int target) {
-        int l = 0;
-        int r = nums.length - 1;
-        while (r >= l) {
-            System.out.println(" RIGHT :: " +r + " LEFT ::: " + l);
-            if(nums[r] == target){
-                return r;
+        int l = 0, r = nums.length - 1;
+
+        while(l <= r){
+            int m = (r - l) / 2 + l;
+            System.out.println("looping");
+            if(nums[m] == target){
+                return m;
+            } 
+            else if(nums[l] <= nums[m]){
+                // check for the left half is sorted
+                // nums[l] < target < nums[m]
+                if(nums[l] <= target && target < nums[m]){
+                    r = m - 1;
+                } else {
+                    l = m + 1;
+                }
             }
-
-            if(nums[l] == target){
-                return l;
-            }
-
-            int leftTarget = nums[l] - target;
-            int rightTarget = nums[r] - target;
-
-            if(leftTarget < rightTarget){
-                l++;
-            } else{
-                r--;
+            else{
+                // Check for the right half is sorted
+                // l = m + 1;
+                if(nums[m] < target && target <= nums[r]){
+                    l = m + 1;
+                } else {
+                    r = m - 1;
+                }
             }
         }
-
         return -1;
     }
 
     public static void main(String[] args) {
-        int[] nums = {4,5,6,7,0,1,2};
-        int target = 0;
+        int[] nums = {5, 1, 3};
+        // int[] nums = {3,4,5,6,7,0,1,2};
+        int target = 3;
 
         int result = search(nums, target);
         System.out.println("RESULT :: " + result);
