@@ -69,14 +69,14 @@ class Solution {
         while (l <= r) {
             int mid = (r - l / 2) + l;
 
-            if(letters[mid] < target) {
-                l = mid + 1;
-            } else{
+            if(target < letters[mid]){
                 r = mid - 1;
+            } else {
+                l = mid + 1;
             }
+            System.out.println("THE LEFT :: " + l + " RIGHT :: " + r);
         }
-        return 'a';
-        
+        return letters[l % letters.length];
     }
 
     // int l = 0, r = arr.length-1;
@@ -99,7 +99,7 @@ class Solution {
 
         // System.out.println("RESULT :: " + ('c'< 'b'));
 
-        System.out.println("RESULT :: " + nextGreatestLetter(arr, 'd'));
+        System.out.println("RESULT :: " + nextGreatestLetter(arr, 'z'));
 
     }
 }
