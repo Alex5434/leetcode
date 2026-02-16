@@ -56,73 +56,148 @@ class Solution {
 
     // NOT optimal solved in O(1) need to solve it in O(logn) using binary search
     // public static int search(int[] nums, int target) {
-    //     int l = 0;
-    //     int r = nums.length - 1;
-    //     while (r >= l) {
-    //         System.out.println(" RIGHT :: " +r + " LEFT ::: " + l);
-    //         if(nums[r] == target){
-    //             return r;
-    //         }
-
-    //         if(nums[l] == target){
-    //             return l;
-    //         }
-
-    //         int leftTarget = nums[l] - target;
-    //         int rightTarget = nums[r] - target;
-
-    //         if(leftTarget < rightTarget){
-    //             l++;
-    //         } else{
-    //             r--;
-    //         }
-    //     }
-
-    //     return -1;
+    // int l = 0;
+    // int r = nums.length - 1;
+    // while (r >= l) {
+    // System.out.println(" RIGHT :: " +r + " LEFT ::: " + l);
+    // if(nums[r] == target){
+    // return r;
     // }
 
-    // Going to solve it in O(log n) using the binary search
-    // ✅ Solved optimally but need to see the video explanation
-    public static int search(int[] nums, int target) {
-        int l = 0, r = nums.length - 1;
+    // if(nums[l] == target){
+    // return l;
+    // }
 
-        while(l <= r){
-            int m = (r - l) / 2 + l;
-            System.out.println("looping");
-            if(nums[m] == target){
+    // int leftTarget = nums[l] - target;
+    // int rightTarget = nums[r] - target;
+
+    // if(leftTarget < rightTarget){
+    // l++;
+    // } else{
+    // r--;
+    // }
+    // }
+
+    // return -1;
+    // }
+    public static int findPivot(int[] nums) {
+        int l = 0;
+        int r = nums.length - 1;
+
+        while (r >= l) {
+            int m = l + (r - l) / 2;
+            System.out.println("LEFT :: " + l + " MIDD :: " + m + " RIGHT :: " + r);
+
+            if (m < r && nums[m] > nums[m + 1]) {
                 return m;
-            } 
-            else if(nums[l] <= nums[m]){
-                // check for the left half is sorted
-                // nums[l] < target < nums[m]
-                if(nums[l] <= target && target < nums[m]){
-                    r = m - 1;
-                } else {
-                    l = m + 1;
-                }
             }
-            else{
-                // Check for the right half is sorted
-                // l = m + 1;
-                if(nums[m] < target && target <= nums[r]){
-                    l = m + 1;
-                } else {
-                    r = m - 1;
-                }
+
+            if (m > l && nums[m] < nums[m - 1]) {
+                return m - 1;
+            }
+
+            if (nums[l] < nums[m]) {
+                l = m + 1;
+            } else {
+                r = m - 1;
             }
         }
         return -1;
     }
 
-    public static void main(String[] args) {
-        int[] nums = {5, 1, 3};
-        // int[] nums = {3,4,5,6,7,0,1,2};
-        int target = 3;
+    // [4,5,6,7,0,1,2]
+    public static int search(int[] nums, int target) {
+        int l = 0;
+        int r = nums.length - 1;
+        // find the pivot
+        // int pivotIndex = -1;
+        // while (r >= l) {
+        // int m = l + (r - l) / 2;
+        // System.out.println("LEFT :: " + l + " MIDD :: " + m + " RIGHT :: " + r);
 
-        int result = search(nums, target);
-        System.out.println("RESULT :: " + result);
+        // if (nums[m] > nums[m + 1]) {
+        // pivotIndex = m;
+        // break;
+        // }
+
+        // if(m < r && nums[m] < nums[m - 1]){
+        // pivotIndex = m - 1;
+        // break;
+        // }
+
+        // if(nums[l] < nums[m]){
+        // l = m + 1;
+        // }
+        // if(nums[m] > nums[r]){
+        // r = m - 1;
+        // }
+        // }
+
+        int result = findPivot(nums);
+
+        System.out.println("THE PIVOT INDEX ISSS ::" + (result + 1));
+
+        return -1;
+    }
+
+    public static int sqareRoot(int n, int m) {
+        // // Write your code here.
+        if (m == 1 || n == 1) {
+            return m;
+        }
+        int l = 1, r = m;
+
+        while (l <= r) {
+            // System.out.println("KKKKKKKKK " + l + " " + m + " " + r);
+            int mid = l + (r - l) / 2;
+            // System.out.println("LKKKK " + Math.pow(mid, n));
+            if(Math.pow(mid, n) == m){
+                return m;
+            } else if (Math.pow(mid, n) < m) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+        }
+
+        return -1;
+
+
+        // using binary seach
+        if (m == 1 || n == 1) {
+            return m;
+        }
+
+        int l = 1, r = m;
+
+        while (l <= r) {
+
+            int mid = l + (r - l) / 2;
+
+            if (Math.pow(mid, n) == m) {
+                return mid;
+            } else if (Math.pow(mid, n) < m) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+
+        }
+
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        // int[] nums = {6, 0, 1, 2, 4, 5};
+        int target = 0;
+
+        // int result = search(nums, target);
+        // System.out.println("RESULT :: " + (int)Math.sqrt());
+        System.out.println("RESULT :: " + sqareRoot(3, 27));
     }
 
 }
 // @lc code=end
 
+
+// 2 * 2 * 2
