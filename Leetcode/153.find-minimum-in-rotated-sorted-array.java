@@ -74,23 +74,42 @@
 class Solution {
 
     // This is not the best solution for this question as it is O(n).
-    // Need to solve this problem in O(log n) using binary search, since I haven't learned it yet.
+    // Need to solve this problem in O(log n) using binary search, since I haven't
+    // learned it yet.
+    // public static int findMin(int[] nums) {
+
+    // int minNumber = nums[0];
+
+    // for (int i = 0; i < nums.length; i++) {
+    // minNumber = Math.min(minNumber, nums[i]);
+    // }
+
+    // return minNumber;
+    // }
+
     public static int findMin(int[] nums) {
+        // initalize the variables l,r
+        int l = 0, r = nums.length - 1;
 
-        int minNumber = nums[0];
-
-        for (int i = 0; i < nums.length; i++) {
-            minNumber = Math.min(minNumber, nums[i]);
+        // start while loop
+        while (l < r) {
+            int m = l + (r - l) / 2;
+            // check if is in which slope
+            if (nums[m] > nums[r]) {
+                // if m and m + 1 is in the descending slope l = m + 1
+                l = m + 1;
+            } else {
+                // else r = m - 1
+                r = m;
+            }
         }
-
-        return minNumber;
+        return nums[l];
     }
 
     public static void main(String[] args) {
-        int[] nums = {3,4,5,1,2};
+        int[] nums = { 3, 4, 5, 6, 7};
         System.out.println("THE RESULT ISS :: " + findMin(nums));
 
     }
 }
 // @lc code=end
-
