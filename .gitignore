@@ -1,1 +1,6 @@
 *.class
+
+[user]
+    name = Alex
+    email = alexander.e.engineer@gmail.com
+
